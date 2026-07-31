@@ -1,0 +1,54 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.moderne.io/releases/changelog
+streams:
+- name: Platform UI
+  scheme: semver
+  current: 13.13.0
+  docs: https://docs.moderne.io/releases/changelog
+- name: CLI / DX
+  scheme: semver
+  current: 4.3.17
+  docs: https://docs.moderne.io/releases/cli-releases
+- name: SaaS platform
+  scheme: major-track (v1 -> v2)
+  current: v2
+  docs: https://docs.moderne.io/releases/saas-v2-changes
+entries:
+- version: UI v13.13.0
+  date: '2026-07-20'
+  breaking: false
+  highlights:
+  - Select all matching filters for bulk PR actions.
+- version: UI v13.12.0
+  date: '2026-07-17'
+  breaking: false
+  highlights:
+  - Add ERROR_MESSAGES catalog for engineering review.
+- version: UI v13.11.0
+  date: '2026-07-15'
+  breaking: false
+  highlights:
+  - Compact filter tabs and search on the Results view.
+- version: UI v13.10.0
+  date: '2026-07-14'
+  breaking: false
+  highlights:
+  - Configure recipe options before adding to the tree.
+- version: CLI / DX v4.3.17
+  date: '2026-07-16'
+  breaking: false
+  highlights:
+  - Share the Maven auth cache with POM resolution in the recipe bundle downloader.
+  - Intern JavaTemplate types on the V2 read path to prevent recipe-run OOM.
+  - Union macOS system roots and keychain trust for trust-store edit system.
+- version: CLI / DX v4.3.16
+  date: '2026-07-15'
+  breaking: false
+  highlights:
+  - Explain 'mod git apply' failures by showing the conflicting code.
+  - Float httpclient5 to latest.release (CVE-2026-54399, CVE-2026-54428).
+  - Add kind-qualified ref filters to trigrep symbol search.
+notes:
+- CLI moved from a two-track (stable/staging) model to a single fully-tested release line.
+- Additional changelogs exist for Agent, Connector, and proprietary recipes.

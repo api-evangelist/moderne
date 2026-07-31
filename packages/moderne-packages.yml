@@ -1,0 +1,73 @@
+generated: '2026-07-20'
+method: searched
+source: https://search.maven.org/search?q=g:io.moderne
+packages:
+- language: java
+  registry: maven
+  name: io.moderne:moderne-cli
+  url: https://central.sonatype.com/artifact/io.moderne/moderne-cli
+  install: "io.moderne:moderne-cli"
+  official: true
+  description: The Moderne CLI (mod) distribution artifact.
+- language: java
+  registry: maven
+  name: io.moderne:moderne-dx
+  url: https://central.sonatype.com/artifact/io.moderne/moderne-dx
+  install: "io.moderne:moderne-dx"
+  official: true
+  description: Moderne DX (air-gapped, on-premises) distribution artifact.
+- language: java
+  registry: maven
+  name: io.moderne:moderne-maven-plugin
+  url: https://central.sonatype.com/artifact/io.moderne/moderne-maven-plugin
+  install: "io.moderne:moderne-maven-plugin"
+  official: true
+  description: First-party Maven plugin for producing/publishing LST artifacts.
+- language: java
+  registry: maven
+  name: io.moderne:moderne-lst-maven-plugin
+  url: https://central.sonatype.com/artifact/io.moderne/moderne-lst-maven-plugin
+  install: "io.moderne:moderne-lst-maven-plugin"
+  official: true
+  description: Maven plugin that generates Moderne LST artifacts during a build.
+- language: java
+  registry: maven
+  name: io.moderne:moderne-agent
+  url: https://central.sonatype.com/artifact/io.moderne/moderne-agent
+  install: "io.moderne:moderne-agent"
+  official: true
+  description: Moderne Agent (SaaS v1) connector distribution artifact.
+- language: java
+  registry: maven
+  name: io.moderne:jsonrpc
+  url: https://central.sonatype.com/artifact/io.moderne/jsonrpc
+  install: "io.moderne:jsonrpc"
+  official: true
+  description: JSON-RPC library used by Moderne tooling.
+- language: kotlin
+  registry: github
+  name: moderne-client-java
+  url: https://github.com/moderneinc/moderne-client-java
+  install: "git+https://github.com/moderneinc/moderne-client-java"
+  official: true
+  description: First-party Java/Kotlin client for the Moderne Platform API.
+- language: shell
+  registry: homebrew
+  name: moderneinc/moderne/mod
+  url: https://github.com/moderneinc/homebrew-moderne
+  install: brew install moderneinc/moderne/mod
+  official: true
+  description: Homebrew tap distributing the Moderne CLI (mod).
+- language: powershell
+  registry: chocolatey
+  name: mod
+  url: https://github.com/moderneinc/chocolatey-moderne
+  install: choco install mod --prerelease
+  official: true
+  description: Chocolatey package distributing the Moderne CLI on Windows.
+notes:
+- >-
+  Moderne's client-facing surface is a GraphQL API (Bearer PAT) plus the CLI and
+  MCP servers; the io.moderne Maven group and the moderne-client-java repo are the
+  first-party libraries. The underlying transformation engine (OpenRewrite,
+  org.openrewrite) is a separate open-source project.

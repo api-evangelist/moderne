@@ -1,0 +1,88 @@
+generated: '2026-07-20'
+method: searched
+status: published
+source: https://docs.moderne.io/user-documentation/agent-tools/mcp/overview
+servers:
+- name: moderne-mcp-local
+  kind: local
+  transport: stdio
+  command: mod mcp
+  install: mod config agent-tools install
+  source: https://docs.moderne.io/user-documentation/agent-tools/mcp/overview
+  description: >-
+    Local MCP server bundled with the Moderne CLI. Runs as a subprocess of the
+    coding agent on the developer workstation, operating on locally checked-out
+    git repositories. Must be started from within a git repo. Backed by
+    OpenRewrite Lossless Semantic Trees (LST) and Moderne Trigrep for semantic
+    code search, navigation, and refactoring.
+  requires_git_repo: true
+  tools:
+  - name: trigrep_search
+    description: "Indexed trigram text search (plain/regex, lang: and file: filters)."
+  - name: trigrep_structural_search
+    description: Comby structural matching over the trigram index for multi-token patterns.
+  - name: grep
+    description: Linear ripgrep/grep search, available before the trigram index finishes.
+  - name: find_types
+    description: Find all references to a type across the codebase.
+  - name: find_methods
+    description: Find all invocations of a method (AspectJ-style patterns).
+  - name: find_annotations
+    description: Find all usages of an annotation across the codebase.
+  - name: find_implementations
+    description: Find all classes implementing an interface or extending a class.
+  - name: symbols_overview
+    description: List symbols in a file or across the codebase.
+  - name: change_type
+    description: Rename or move a type across the whole codebase (IDE-style rename).
+  - name: change_method_name
+    description: Rename a method across all call sites and declarations.
+  - name: pattern_replace
+    description: Run a Refaster template to make mechanical code changes codebase-wide.
+  - name: search_recipes
+    description: Search available OpenRewrite recipes by natural-language query.
+  - name: learn_recipe
+    description: Retrieve full details for a recipe (options, data table schemas).
+  - name: run_recipe
+    description: Run an OpenRewrite recipe on the repository.
+  - name: query_datatable
+    description: Run SQL against recipe data-table results (loaded into DuckDB).
+  - name: build_info
+    description: Report build tool, compile and test commands for the repository.
+  - name: build_status
+    description: Report status of the trigram search index.
+  - name: lst_status
+    description: Report LST build status, source file count, pending changes.
+- name: moderne-mcp-remote
+  kind: remote
+  transport: streamable-http
+  url: https://api.app.moderne.io/mcp
+  tenant_url_template: https://api.<tenant>.moderne.io/mcp
+  auth:
+    type: bearer
+    token: Moderne personal access token (same token as the GraphQL API)
+    headers:
+    - name: Authorization
+      value: Bearer <moderne-access-token>
+    - name: X-Moderne-Platform-Version
+      value: v2
+  source: https://docs.moderne.io/user-documentation/agent-tools/mcp/remote-server
+  description: >-
+    Hosted remote MCP server on the Moderne Platform, served from the same host
+    as the GraphQL API. Operates on repositories already ingested into your
+    tenant, scoped by organization. No anonymous access; identity and permissions
+    are derived from the personal access token. Register as a streamable-HTTP MCP
+    server in Claude Code, Gemini CLI, GitHub Copilot CLI, or any client that
+    supports remote MCP with custom headers.
+  scope: organizationId (recipe runs not allowed against root organization ALL)
+  tools:
+  - name: searchForRecipe
+    description: Search the platform recipe catalog by natural-language query for an organization.
+  - name: describeRecipeOptions
+    description: Return the configurable options a recipe accepts.
+  - name: describeRecipeDataTables
+    description: Return the data tables a recipe produces.
+  - name: runRecipe
+    description: Run a recipe across an organization's repositories; returns a data-table preview.
+  - name: processDataTableSql
+    description: Run SQL against the data tables produced by a recipe run (by run ID).

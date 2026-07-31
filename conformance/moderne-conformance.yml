@@ -1,0 +1,31 @@
+generated: '2026-07-20'
+method: searched
+source: https://moderne.ai/
+standards:
+- id: oauth2
+  conforms: true
+  evidence: Bearer personal-access-token authorization on the GraphQL API and MCP server.
+- id: oidc
+  conforms: true
+  evidence: OIDC supported for SSO via the Keycloak identity broker (authentication docs).
+- id: saml
+  conforms: true
+  evidence: SAML 2.0 SSO supported via the Keycloak identity broker (authentication docs).
+- id: graphql
+  conforms: true
+  evidence: Public GraphQL API at https://api.app.moderne.io/graphql with GraphiQL playground.
+- id: model-context-protocol
+  conforms: true
+  evidence: Local (mod mcp) and hosted (https://api.app.moderne.io/mcp) MCP servers.
+- id: soc2
+  conforms: true
+  evidence: SOC 2 (AICPA SOC for Service Organizations) certification stated on moderne.ai.
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: GraphQL API uses the standard GraphQL errors[] envelope, not problem+json.
+compliance:
+  published: true
+  programs:
+  - name: SOC 2
+    standard: AICPA SOC for Service Organizations
+    evidence: https://moderne.ai/

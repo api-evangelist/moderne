@@ -1,0 +1,44 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.moderne.io/administrator-documentation/moderne-platform/references/authentication
+docs: https://docs.moderne.io/user-documentation/moderne-platform/how-to-guides/create-api-access-tokens
+summary:
+  types: [http, oauth2, openIdConnect, saml]
+  api_access: bearer-personal-access-token
+  sso: [SAML, OIDC, social-login]
+  identity_broker: Keycloak
+schemes:
+- name: PersonalAccessToken
+  type: http
+  scheme: bearer
+  description: >-
+    Personal access tokens authenticate all programmatic access — the GraphQL API
+    (https://api.app.moderne.io/graphql), the remote MCP server, and the Moderne
+    CLI. Sent as `Authorization: Bearer <token>`. Tokens carry the same permissions
+    as the issuing account and are created in Account Settings > Access Tokens with
+    a configurable expiry (7/30/90 days, custom, or no expiration, subject to an
+    org-configured maximum). CLI tokens use the `mat-` prefix.
+  token_endpoint_ui: https://app.moderne.io/settings/access-token
+  header:
+    name: Authorization
+    format: Bearer <token>
+  extra_headers:
+  - name: X-Moderne-Platform-Version
+    value: v2
+    note: Required while SaaS v1 and v2 run in parallel (API and remote MCP).
+- name: SSO
+  type: openIdConnect
+  description: >-
+    Interactive human authentication to the Moderne Platform is via SSO brokered
+    by a dedicated Keycloak server acting as an identity broker to the customer
+    Identity Provider. Supports SAML, OIDC, and social logins (Google, GitHub).
+    Browser flow uses PKCE and issues an opaque JWT validated server-side against
+    Keycloak. IdP claims (email, firstName, lastName, admin role) are mapped into
+    Keycloak on each authentication.
+  protocols: [OIDC, SAML]
+  flow: authorization-code-pkce
+  identity_broker: Keycloak
+notes:
+- The GraphQL API and remote MCP server share the same personal-access-token auth.
+- SCM access tokens (separate) are required to commit results back to source control.
+- Company has no OpenAPI; auth profile derived from published documentation (searched).

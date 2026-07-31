@@ -1,0 +1,44 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.moderne.io/user-documentation/moderne-platform/how-to-guides/recipe-execution-and-commits-with-graphql
+api_style: GraphQL
+endpoint: https://api.app.moderne.io/graphql
+playground: https://api.app.moderne.io/
+authentication:
+  style: bearer-token
+  header: 'Authorization: Bearer <personal-access-token>'
+  extra_header: 'X-Moderne-Platform-Version: v2'
+  ref: authentication/moderne-authentication.yml
+async_execution:
+  model: >-
+    Recipe execution is asynchronous. The runRecipe mutation returns a run `id`;
+    clients poll the recipeRun query for `state` (the platform UI polls every ~3s)
+    until completion, then retrieve repository results and data tables.
+  poll_interval_seconds: 3
+pagination:
+  style: graphql-relay-connections
+  note: >-
+    List fields (organizations, repositories, results, data tables) are exposed as
+    GraphQL connections with edges/nodes and cursor-based paging.
+error_envelope:
+  format: graphql-errors
+  note: >-
+    Errors are returned in the standard GraphQL top-level `errors[]` array with
+    `message` and `path`; there is no RFC 9457 problem+json envelope (GraphQL API).
+    HTTP 401 is returned when the bearer token is missing or invalid.
+idempotency:
+  supported: false
+  note: >-
+    No documented idempotency-key mechanism. Recipe runs are addressed by a
+    server-issued run id; re-issuing runRecipe creates a new run.
+versioning:
+  scheme: platform-version-header
+  note: >-
+    Parallel SaaS v1/v2; clients set X-Moderne-Platform-Version: v2. See
+    lifecycle/moderne-lifecycle.yml.
+rate_limiting:
+  documented: false
+cross_links:
+  authentication: authentication/moderne-authentication.yml
+  lifecycle: lifecycle/moderne-lifecycle.yml
+  data_model: data-model/moderne-data-model.yml

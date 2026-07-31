@@ -1,0 +1,29 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.moderne.io/user-documentation/agent-tools/skills
+note: >-
+  Moderne publishes first-party Agent Skills bundled with the CLI and installed to
+  detected coding agents via `mod config agent-tools install` (Claude Code,
+  Windsurf, Cursor, GitHub Copilot, Sourcegraph Amp, OpenAI Codex). Each is a
+  SKILL.md teaching agents the OpenRewrite recipe workflow; the files below capture
+  the published skill catalog and the real tools/operations each uses.
+install: mod config agent-tools install
+skills:
+- file: moderne-create-organization.md
+  name: create-organization
+  api: mcp/moderne-mcp.yml
+  tools: [searchForRecipe]
+  operations: [mod git sync csv]
+- file: moderne-create-recipe.md
+  name: create-recipe
+  api: mcp/moderne-mcp.yml
+  tools: [learn_recipe, pattern_replace]
+- file: moderne-run-recipe.md
+  name: run-recipe
+  api: mcp/moderne-mcp.yml
+  tools: [searchForRecipe, describeRecipeOptions, describeRecipeDataTables, runRecipe, processDataTableSql]
+  operations: [runRecipe, recipeRun]
+- file: moderne-analyze-impact.md
+  name: analyze-impact
+  api: mcp/moderne-mcp.yml
+  tools: [query_datatable, processDataTableSql]

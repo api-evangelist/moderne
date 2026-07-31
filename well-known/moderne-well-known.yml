@@ -1,0 +1,41 @@
+generated: '2026-07-20'
+method: probed
+source: live probes of Moderne hosts
+note: >-
+  No valid /.well-known/ discovery documents were found. app.moderne.io is a
+  Next.js single-page application that returns the sign-in HTML shell (HTTP 200)
+  for arbitrary paths, so the 200 responses below are NOT genuine well-known
+  documents and were intentionally not saved as artifacts. No WellKnown/SecurityTxt
+  scoring pointer is emitted.
+hosts_probed:
+- https://app.moderne.io
+- https://moderne.io
+- https://moderne.ai
+documents:
+- path: /.well-known/security.txt
+  host: https://app.moderne.io
+  status: 200
+  valid: false
+  reason: returns SPA sign-in HTML, not RFC 9116 security.txt
+- path: /.well-known/security.txt
+  host: https://moderne.io
+  status: 404
+- path: /.well-known/security.txt
+  host: https://moderne.ai
+  status: 404
+- path: /.well-known/openid-configuration
+  host: https://app.moderne.io
+  status: 200
+  valid: false
+  reason: returns SPA HTML, not OIDC discovery JSON (SSO is customer-tenant Keycloak)
+- path: /.well-known/oauth-authorization-server
+  host: https://app.moderne.io
+  status: 200
+  valid: false
+  reason: returns SPA HTML, not RFC 8414 metadata JSON
+- path: /api-catalog
+  host: https://app.moderne.io
+  status: 404
+- path: /.well-known/ai-plugin.json
+  host: https://app.moderne.io
+  status: 404

@@ -1,0 +1,77 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.moderne.io/user-documentation/moderne-cli/getting-started/cli-intro
+reference: https://docs.moderne.io/user-documentation/moderne-cli/cli-reference
+releases: https://docs.moderne.io/releases/cli-releases
+name: Moderne CLI
+binary: mod
+current_version: 4.3.17
+description: >-
+  The Moderne CLI (mod) builds Lossless Semantic Tree (LST) artifacts across many
+  repositories and runs OpenRewrite recipes against all of them from a local
+  machine, complementing the Moderne Platform (SaaS) and Moderne DX. Distributed
+  as a lightweight wrapper script that downloads a platform-specific installer
+  (JAR + JRE) on first run.
+install:
+- method: script-unix
+  command: curl https://app.moderne.io/cli | bash
+- method: script-windows
+  command: irm https://app.moderne.io/cli/windows | iex
+- method: homebrew
+  command: brew install moderneinc/moderne/mod
+- method: chocolatey
+  command: choco install mod --prerelease
+- method: maven
+  coordinates: io.moderne:moderne-cli
+auth:
+  configure: mod config moderne edit https://app.moderne.io
+  interactive_login: mod config moderne login
+  token_login: mod config moderne login --with-token mat-YOUR_TOKEN
+  token_ttl_days: 365
+command_groups:
+- name: audit
+  summary: Audit builds and runs.
+- name: batch
+  summary: Batch publish operations.
+- name: build
+  summary: Generate LST artifacts for repositories.
+- name: clean
+  summary: Clean builds, runs, and repos.
+- name: config
+  summary: Global configuration (moderne connection, recipes, agent-tools, trust-store).
+- name: devcenter
+  summary: Run DevCenter across organizations.
+- name: exec
+  summary: Execute arbitrary commands across repositories.
+- name: git
+  summary: Multi-repository git operations (sync, apply, clone).
+- name: list
+  summary: List repositories and artifacts.
+- name: log
+  summary: Inspect logs.
+- name: monitor
+  summary: Monitor long-running operations.
+- name: prebuild
+  summary: Prebuild steps for LST generation.
+- name: publish
+  summary: Publish LST artifacts.
+- name: run
+  summary: Execute OpenRewrite recipes locally.
+- name: run-history
+  summary: Inspect prior recipe-run history.
+- name: search
+  summary: Repository search via trigram indexes.
+- name: study
+  summary: Produce studies from recipe data tables.
+- name: telemetry
+  summary: Manage CLI telemetry.
+- name: trace
+  summary: Analyze build failures (mod trace).
+- name: wrapper
+  summary: Manage the CLI wrapper.
+- name: mcp
+  summary: Start the local MCP server for AI coding agents.
+key_flows:
+- Build LSTs across many repos, then run recipes at scale (mod build; mod run).
+- Connect the CLI to a tenant and authenticate (mod config moderne login).
+- Install agent tools — skills + MCP server (mod config agent-tools install).

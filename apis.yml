@@ -1,8 +1,17 @@
 aid: moderne
 name: Moderne
-description: 'Moderne is a company surfaced as a portfolio company of true-ventures and added to the API
-  Evangelist network as a stub for enrichment. Sector: developer-tools. This profile is a lead awaiting
-  the enrichment pipeline.'
+description: >-
+  Moderne is a deterministic, large-scale code transformation and mass-remediation
+  platform built on the open-source OpenRewrite framework and its Lossless Semantic
+  Trees (LST) — compiler-accurate, format-preserving models of source code. Moderne
+  sequences codebases (from one repository to 100,000) into type-attributed LSTs and
+  runs 10,000+ deterministic recipes across 40+ domains and 10+ languages to drive
+  automated refactoring, framework and dependency migrations, security patching, and
+  code governance with verifiable, regression-free results. The platform exposes a
+  GraphQL API for recipe execution and commits, a first-party CLI (mod), local and
+  hosted Model Context Protocol (MCP) servers plus bundled Agent Skills for AI coding
+  agents, and Moddy, a multi-repo AI agent. Delivered as the Moderne Platform (SaaS)
+  and Moderne DX (air-gapped, on-premises). Backed by True Ventures.
 url: https://raw.githubusercontent.com/api-evangelist/moderne/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -10,18 +19,115 @@ x-backed-by:
 - true-ventures
 x-tier: stub
 x-tier-reason: portfolio-lead
+x-enrichment:
+  date: '2026-07-20'
+  status: enriched
+  artifacts_added: 18
+  pass: local-v1
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-20'
 tags:
 - Company
 - Developer Tools
-apis: []
+- Code Transformation
+- Automated Refactoring
+- Code Migration
+- Security Patching
+- OpenRewrite
+- Static Analysis
+- Code Governance
+- DevOps
+- GraphQL
+- AI Agents
+- MCP
+image: https://moderne.io/favicon.ico
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+apis:
+- name: Moderne GraphQL API
+  description: >-
+    The Moderne Platform GraphQL API for programmatically executing OpenRewrite
+    recipes across organizations of repositories, polling recipe-run state,
+    retrieving results and recipe data tables, and committing changes back to
+    source control (pull requests). Authenticated with a Bearer personal access
+    token; an interactive GraphiQL playground is served at the API root.
+  humanURL: https://docs.moderne.io/user-documentation/moderne-platform/references/graphql-api-reference
+  baseURL: https://api.app.moderne.io/graphql
+  properties:
+  - type: APIReference
+    url: https://docs.moderne.io/user-documentation/moderne-platform/references/graphql-api-reference
+  - type: Authentication
+    url: authentication/moderne-authentication.yml
+  - type: Conventions
+    url: conventions/moderne-conventions.yml
+  - type: DataModel
+    url: data-model/moderne-data-model.yml
 common:
 - type: Website
-  url: https://moderne.io/
+  url: https://moderne.ai/
+- type: DeveloperPortal
+  url: https://docs.moderne.io/
+- type: Documentation
+  url: https://docs.moderne.io/
+- type: APIReference
+  url: https://docs.moderne.io/user-documentation/moderne-platform/references/graphql-api-reference
+- type: GettingStarted
+  url: https://docs.moderne.io/user-documentation/moderne-platform/getting-started/running-your-first-recipe
+- type: Authentication
+  url: authentication/moderne-authentication.yml
+- type: Blog
+  url: https://moderne.io/blog
+- type: Support
+  url: https://moderne.io/contact-us
+- type: GitHubOrganization
+  url: https://github.com/moderneinc
+- type: TermsOfService
+  url: https://moderne.io/terms-of-service
+- type: PrivacyPolicy
+  url: https://moderne.io/privacy-policy
+- type: SignUp
+  url: https://app.moderne.io/
+- type: ChangeLog
+  url: changelog/moderne-changelog.yml
+- type: LLMsTxt
+  url: llms/moderne-llms.txt
+- type: MCPServer
+  url: mcp/moderne-mcp.yml
+- type: CLI
+  url: cli/moderne-cli.yml
+- type: Packages
+  url: packages/moderne-packages.yml
+- type: SDKs
+  url: packages/moderne-packages.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: Conventions
+  url: conventions/moderne-conventions.yml
+- type: DataModel
+  url: data-model/moderne-data-model.yml
+- type: Lifecycle
+  url: lifecycle/moderne-lifecycle.yml
+- type: Deprecation
+  url: lifecycle/moderne-lifecycle.yml
+- type: Conformance
+  url: conformance/moderne-conformance.yml
+- type: Compliance
+  url: conformance/moderne-conformance.yml
+- type: DomainSecurity
+  url: security/moderne-domain-security.yml

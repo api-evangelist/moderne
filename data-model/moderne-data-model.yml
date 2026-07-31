@@ -1,0 +1,57 @@
+generated: '2026-07-20'
+method: derived
+source: https://docs.moderne.io/user-documentation/moderne-platform/references/graphql-api-reference
+note: >-
+  Entity graph derived from the Moderne GraphQL API reference and recipe-execution
+  guide. Moderne has no OpenAPI; entities and relationships are read from the
+  documented GraphQL types and workflow rather than $ref/id-field derivation.
+entities:
+- name: Organization
+  description: A grouping of repositories in a tenant; identified by id, path (e.g. ALL/Default), or name. Recipe runs target a sub-organization (not root ALL).
+- name: Repository
+  description: A source-code repository ingested into the tenant, from which LST artifacts are produced.
+- name: Recipe
+  description: An OpenRewrite recipe (declarative, Refaster, or imperative) with configurable options and data-table outputs.
+- name: RecipeRun
+  description: An asynchronous execution of a recipe over an organization; has a run id and a state polled to completion.
+- name: DataTable
+  description: Structured tabular output emitted by a recipe run; queryable via SQL (DuckDB / processDataTableSql).
+- name: Commit
+  description: A change committed back to source control (pull request) from recipe results; requires an SCM access token.
+- name: AccessToken
+  description: A personal access token granting API/CLI/MCP access with the user's permissions.
+- name: User
+  description: An authenticated principal with claims (email, firstName, lastName, admin) asserted by the IdP.
+relationships:
+- from: Organization
+  to: Repository
+  type: has_many
+  via: repositories
+- from: Repository
+  to: Organization
+  type: belongs_to
+  via: organization
+- from: RecipeRun
+  to: Recipe
+  type: has_one
+  via: recipe
+- from: RecipeRun
+  to: Organization
+  type: belongs_to
+  via: organizationId
+- from: RecipeRun
+  to: DataTable
+  type: has_many
+  via: dataTables
+- from: RecipeRun
+  to: Commit
+  type: has_many
+  via: commits
+- from: Commit
+  to: Repository
+  type: belongs_to
+  via: repository
+- from: User
+  to: AccessToken
+  type: has_many
+  via: accessTokens

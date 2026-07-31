@@ -1,0 +1,29 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.moderne.io/releases/saas-v2-changes
+versioning:
+  scheme: platform-version-header
+  current: v2
+  header: 'X-Moderne-Platform-Version: v2'
+  docs: https://docs.moderne.io/releases/saas-v2-changes
+  components:
+    platform_ui: 13.13.0
+    cli_dx: 4.3.17
+deprecation:
+  policy_url: https://docs.moderne.io/releases/saas-v2-migration
+  summary: >-
+    SaaS v1 (the Moderne Agent) is being superseded by SaaS v2 (the Moderne
+    Connector). Moderne publishes a migration guide and a full property-by-property
+    mapping from every v1 Agent configuration property to its v2 Connector
+    equivalent; v1 and v2 run in parallel during the coexistence window, with the
+    X-Moderne-Platform-Version header selecting the target.
+  property_mapping: https://docs.moderne.io/releases/saas-v2-property-mapping
+  sunset_header: false
+status_page: null
+sla:
+  url: null
+  note: Enterprise (book-a-demo) engagement; no public status page or SLA page found.
+deprecated_operations: []
+notes:
+- No public status page (status.moderne.io not resolvable) — StatusPage pointer intentionally omitted.
+- Deprecation policy is the documented SaaS v1 -> v2 migration; Deprecation pointer wired.
