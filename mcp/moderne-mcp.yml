@@ -9,16 +9,14 @@ servers:
   command: mod mcp
   install: mod config agent-tools install
   source: https://docs.moderne.io/user-documentation/agent-tools/mcp/overview
-  description: >-
-    Local MCP server bundled with the Moderne CLI. Runs as a subprocess of the
-    coding agent on the developer workstation, operating on locally checked-out
-    git repositories. Must be started from within a git repo. Backed by
-    OpenRewrite Lossless Semantic Trees (LST) and Moderne Trigrep for semantic
+  description: Local MCP server bundled with the Moderne CLI. Runs as a subprocess of the coding agent
+    on the developer workstation, operating on locally checked-out git repositories. Must be started from
+    within a git repo. Backed by OpenRewrite Lossless Semantic Trees (LST) and Moderne Trigrep for semantic
     code search, navigation, and refactoring.
   requires_git_repo: true
   tools:
   - name: trigrep_search
-    description: "Indexed trigram text search (plain/regex, lang: and file: filters)."
+    description: 'Indexed trigram text search (plain/regex, lang: and file: filters).'
   - name: trigrep_structural_search
     description: Comby structural matching over the trigram index for multi-token patterns.
   - name: grep
@@ -67,13 +65,11 @@ servers:
     - name: X-Moderne-Platform-Version
       value: v2
   source: https://docs.moderne.io/user-documentation/agent-tools/mcp/remote-server
-  description: >-
-    Hosted remote MCP server on the Moderne Platform, served from the same host
-    as the GraphQL API. Operates on repositories already ingested into your
-    tenant, scoped by organization. No anonymous access; identity and permissions
-    are derived from the personal access token. Register as a streamable-HTTP MCP
-    server in Claude Code, Gemini CLI, GitHub Copilot CLI, or any client that
-    supports remote MCP with custom headers.
+  description: Hosted remote MCP server on the Moderne Platform, served from the same host as the GraphQL
+    API. Operates on repositories already ingested into your tenant, scoped by organization. No anonymous
+    access; identity and permissions are derived from the personal access token. Register as a streamable-HTTP
+    MCP server in Claude Code, Gemini CLI, GitHub Copilot CLI, or any client that supports remote MCP
+    with custom headers.
   scope: organizationId (recipe runs not allowed against root organization ALL)
   tools:
   - name: searchForRecipe
@@ -86,3 +82,10 @@ servers:
     description: Run a recipe across an organization's repositories; returns a data-table preview.
   - name: processDataTableSql
     description: Run SQL against the data tables produced by a recipe run (by run ID).
+deployment:
+  mode: remote
+  endpoint: https://api.app.moderne.io/mcp
+  verified: probed
+  probe: wall
+  checked: '2026-08-12'
+  source: catalog MCP census
